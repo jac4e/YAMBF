@@ -1,0 +1,45 @@
+name: Test and build MissionBlipFix
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-build:
+    runs-on: windows-2022
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Fetch pinned build references
+        run: python ci/fetch_dependencies.py .ci-deps
+      - name: Build with the Windows .NET Framework compiler
+        shell: powershell
+        run: ./build.ps1 .ci-deps/shvdne .ci-deps/framework
+      - name: Verify release package
+        run: python ci/verify_package.py
+
+  test-and-build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes mono-devel libmono-cecil-private-cil
+      - name: Build and test against .NET Framework 4.8
+        run: bash ci/run.sh "$RUNNER_TEMP/mission-blip-fix"
+      - name: Upload installable mod
+        uses: actions/upload-artifact@v4
+        with:
+          name: MissionBlipFix
+          path: package/MissionBlipFix-*.zip
+          if-no-files-found: error
+          retention-days: 30
