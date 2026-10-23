@@ -82,7 +82,7 @@ For the complete CI checks, also install `libmono-cecil-private-cil` and run:
 bash ci/run.sh .ci-deps
 ```
 
-This downloads the pinned references, builds the mod, runs the tests, audits .NET Framework API compatibility (including rejection of a known incompatible overload), and verifies ZIP contents. Set `CECIL_PATH` to your Mono.Cecil 0.11 DLL if it is installed somewhere other than the default Debian/Ubuntu path.
+This downloads the pinned references, builds the mod, runs the tests, audits .NET Framework API compatibility (including rejection of a known incompatible overload), and verifies ZIP contents. Mono.Cecil 0.11 is discovered under `/usr/lib/mono/gac/Mono.Cecil/` regardless of its patch version. Set `CECIL_PATH` to the DLL's full path to use an installation elsewhere.
 
 GitHub Actions runs the full checks on Linux and builds and verifies the package on Windows for pushes and pull requests. Building on Linux produces the same type of Windows .NET Framework mod; it does not provide a native Linux game runtime.
 

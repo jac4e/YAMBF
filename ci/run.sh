@@ -11,9 +11,18 @@ python3 -m unittest discover -s tests -p 'test_*.py'
 
 # Mono's implementation assemblies expose overloads that GTA's Windows .NET
 # Framework cannot load. Audit the built DLL against Microsoft reference DLLs.
-cecil_path=${CECIL_PATH:-/usr/lib/mono/gac/Mono.Cecil/0.11.1.0__0738eb9f132ed756/Mono.Cecil.dll}
+cecil_path=${CECIL_PATH:-}
+if [ -z "$cecil_path" ]; then
+    # Distributions ship different 0.11 versions and GAC directory names.
+    for candidate in /usr/lib/mono/gac/Mono.Cecil/0.11.*__*/Mono.Cecil.dll; do
+        if [ -f "$candidate" ]; then
+            cecil_path=$candidate
+            break
+        fi
+    done
+fi
 if [ ! -f "$cecil_path" ]; then
-    echo 'Mono.Cecil 0.11 not found; install libmono-cecil-private-cil or set CECIL_PATH.' >&2
+    echo "Mono.Cecil 0.11 not found at '${cecil_path:-/usr/lib/mono/gac/Mono.Cecil/0.11.*__*/Mono.Cecil.dll}'; install libmono-cecil-private-cil or set CECIL_PATH to its DLL." >&2
     exit 1
 fi
 test_dir=$(mktemp -d /tmp/mission-blip-ci.XXXXXX)
