@@ -1,0 +1,18 @@
+{
+  "shvdne": {
+    "url": "https://github.com/Chiheb-Bacha/ScriptHookVDotNetEnhanced/releases/download/v1.1.0.6/ScriptHookVDotNetEnhanced-v1.1.0.6.zip",
+    "sha256": "f10da8819fa6814fb0a04553567d2516934eac96b16af06ad8f315f0da00473a",
+    "files": {
+      "ScriptHookVDotNet3.dll": "shvdne/ScriptHookVDotNet3.dll"
+    }
+  },
+  "net48": {
+    "url": "https://api.nuget.org/v3-flatcontainer/microsoft.netframework.referenceassemblies.net48/1.0.3/microsoft.netframework.referenceassemblies.net48.1.0.3.nupkg",
+    "sha256": "8a7e348538e7eb91351696911689f49e3d4f63f8bab517432bbe159b8b1104a2",
+    "files": {
+      "build/.NETFramework/v4.8/mscorlib.dll": "framework/mscorlib.dll",
+      "build/.NETFramework/v4.8/System.dll": "framework/System.dll",
+      "build/.NETFramework/v4.8/System.Core.dll": "framework/System.Core.dll"
+    }
+  }
+}

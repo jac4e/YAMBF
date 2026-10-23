@@ -1,2 +1,10 @@
+# Build output and downloaded dependencies
+package/
+bin/
+obj/
+.ci-deps/
+__pycache__/
+*.pyc
+
 # Locally extracted GTA script files
 *.ysc
