@@ -25,10 +25,10 @@ if [ ! -f "$cecil_path" ]; then
     echo "Mono.Cecil 0.11 not found at '${cecil_path:-/usr/lib/mono/gac/Mono.Cecil/0.11.*__*/Mono.Cecil.dll}'; install libmono-cecil-private-cil or set CECIL_PATH to its DLL." >&2
     exit 1
 fi
-test_dir=$(mktemp -d /tmp/mission-blip-ci.XXXXXX)
+test_dir=$(mktemp -d /tmp/yambf-ci.XXXXXX)
 trap 'rm -rf "$test_dir"' EXIT
 mcs -warnaserror -r:"$cecil_path" -out:"$test_dir/FrameworkTests.exe" tests/FrameworkTests.cs
-mono "$test_dir/FrameworkTests.exe" package/scripts/MissionBlipFix.dll "$dependency_dir/framework"
+mono "$test_dir/FrameworkTests.exe" package/scripts/YAMBF.dll "$dependency_dir/framework"
 
 # Prove the audit rejects the exact unsupported API that broke version 1.0.0.
 mono "$test_dir/FrameworkTests.exe" --write-incompatible "$test_dir/Incompatible.dll"

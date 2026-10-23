@@ -1,4 +1,4 @@
-name: Test and build MissionBlipFix
+name: Test and build YAMBF
 
 on:
   push:
@@ -35,11 +35,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install --yes mono-devel libmono-cecil-private-cil
       - name: Build and test against .NET Framework 4.8
-        run: bash ci/run.sh "$RUNNER_TEMP/mission-blip-fix"
+        run: bash ci/run.sh "$RUNNER_TEMP/yambf"
       - name: Upload installable mod
         uses: actions/upload-artifact@v4
         with:
-          name: MissionBlipFix
-          path: package/MissionBlipFix-*.zip
+          name: YAMBF
+          path: package/YAMBF-*.zip
           if-no-files-found: error
           retention-days: 30

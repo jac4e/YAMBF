@@ -5,9 +5,9 @@ using System.Runtime.InteropServices;
 using GTA;
 using GTA.Native;
 
-namespace MissionBlipFix
+namespace YAMBF
 {
-    public sealed class MissionBlipFixScript : Script
+    public sealed class YAMBFScript : Script
     {
         private MethodInfo findPattern;
         private IntPtr ownedPatch;
@@ -15,10 +15,10 @@ namespace MissionBlipFix
         private bool online;
         private int nextCheck;
         private int nextDiagnostic;
-        private readonly string logPath = Path.Combine("scripts", "MissionBlipFix.log");
+        private readonly string logPath = Path.Combine("scripts", "YAMBF.log");
         private readonly int controllerHash = unchecked((int)0x80CFE974);
 
-        public MissionBlipFixScript()
+        public YAMBFScript()
         {
             Interval = 500;
             nextCheck = Environment.TickCount;

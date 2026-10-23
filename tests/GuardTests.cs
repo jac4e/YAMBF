@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using MissionBlipFix;
+using YAMBF;
 
 internal static class GuardTests
 {

@@ -29,7 +29,7 @@ try {
     & $compiler -nologo -noconfig -nostdlib -target:library -platform:x64 -optimize+ -warnaserror `
         "-r:$framework/mscorlib.dll" "-r:$framework/System.dll" "-r:$framework/System.Core.dll" `
         "-r:$runtime/ScriptHookVDotNet3.dll" `
-        '-out:package/scripts/MissionBlipFix.dll' BlipGuard.cs MissionBlipFix.cs
+        '-out:package/scripts/YAMBF.dll' BlipGuard.cs YAMBF.cs
     if ($LASTEXITCODE -ne 0) { throw 'C# compilation failed.' }
     python ci/package.py
     if ($LASTEXITCODE -ne 0) { throw 'Release packaging failed.' }

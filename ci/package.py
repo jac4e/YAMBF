@@ -7,8 +7,8 @@ root = Path(__file__).resolve().parents[1]
 base = root / "package"
 copyfile(root / "README.md", base / "README.md")
 version = (root / "VERSION").read_text().strip()
-archive_path = base / f"MissionBlipFix-{version}.zip"
+archive_path = base / f"YAMBF-{version}.zip"
 with ZipFile(archive_path, "w", ZIP_DEFLATED) as archive:
-    for name in ["scripts/MissionBlipFix.dll", "README.md"]:
+    for name in ["scripts/YAMBF.dll", "README.md"]:
         archive.write(base / name, name)
 print(f"Created {archive_path}")

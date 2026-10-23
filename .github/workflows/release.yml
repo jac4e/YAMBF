@@ -1,4 +1,4 @@
-name: Release MissionBlipFix
+name: Release YAMBF
 
 on:
   push:
@@ -32,7 +32,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install --yes mono-devel libmono-cecil-private-cil
       - name: Build and test against .NET Framework 4.8
-        run: bash ci/run.sh "$RUNNER_TEMP/mission-blip-fix"
+        run: bash ci/run.sh "$RUNNER_TEMP/yambf"
       - name: Publish GitHub release with installable ZIP
         env:
           GH_TOKEN: ${{ github.token }}
@@ -41,7 +41,7 @@ jobs:
           RELEASE_VERSION: ${{ steps.version.outputs.version }}
         run: |
           gh release create "$RELEASE_TAG" \
-            "package/MissionBlipFix-${RELEASE_VERSION}.zip" \
+            "package/YAMBF-${RELEASE_VERSION}.zip" \
             --verify-tag \
-            --title "MissionBlipFix ${RELEASE_TAG}" \
+            --title "Yet Another Mission Blip Fix (YAMBF) ${RELEASE_TAG}" \
             --generate-notes

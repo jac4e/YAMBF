@@ -1,6 +1,6 @@
 using System;
 
-namespace MissionBlipFix
+namespace YAMBF
 {
     internal static class BlipGuard
     {

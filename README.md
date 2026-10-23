@@ -1,4 +1,4 @@
-# Mission Blip Fix 1.0.1 — GTA V Enhanced
+# Yet Another Mission Blip Fix (YAMBF) 1.0.1 — GTA V Enhanced
 
 Repairs a specific cause of Story Mode mission icons failing to return after character switches or death: the vanilla `blip_controller` waits in a loop while 150 or more blips exist. Mods can keep the count above that threshold indefinitely. Hiding icons does not release their handles or lower that count.
 
@@ -14,24 +14,24 @@ Requirements:
 
 Instructions:
 
-1. Download `MissionBlipFix-<version>.zip` from this repository's **Releases** page. The GitHub source archives do not contain the compiled mod.
+1. Download `YAMBF-<version>.zip` from this repository's **Releases** page. The GitHub source archives do not contain the compiled mod.
 2. Locate your GTA V Enhanced game folder (the folder containing the game executable).
-3. Extract the release ZIP into that folder, preserving the `scripts` subfolder. Create `scripts` if it does not exist, or merge it with your existing folder. The resulting path must be `<game folder>/scripts/MissionBlipFix.dll`.
-4. Start Story Mode. Check `scripts/MissionBlipFix.log` for `Patched blip_controller 150-icon wait gate` once the controller is running.
+3. Extract the release ZIP into that folder, preserving the `scripts` subfolder. Create `scripts` if it does not exist, or merge it with your existing folder. The resulting path must be `<game folder>/scripts/YAMBF.dll`.
+4. Start Story Mode. Check `scripts/YAMBF.log` for `Patched blip_controller 150-icon wait gate` once the controller is running.
 
 The release ZIP contains only this mod and its README; install the requirements separately. If you run the game through a compatibility layer, configure Script Hook V and SHVDNE according to their instructions before installing this mod.
 
-To update, close the game and replace `scripts/MissionBlipFix.dll`. To uninstall, close the game and remove that DLL; you can also remove `scripts/MissionBlipFix.log`.
+To update, close the game and replace `scripts/YAMBF.dll`. To uninstall, close the game and remove that DLL; you can also remove `scripts/YAMBF.log`.
 
 ## Troubleshooting and limitations
 
-`scripts/MissionBlipFix.log` records successful application, active blip counts, character model, mission/switch state, and errors. If no log is created, check that SHVDNE is installed and loading scripts, and confirm the DLL's location.
+`scripts/YAMBF.log` records successful application, active blip counts, character model, mission/switch state, and errors. If no log is created, check that SHVDNE is installed and loading scripts, and confirm the DLL's location.
 
 A changed or unsupported script signature disables the mod and logs the reason instead of guessing a memory location. If icons remain missing despite the success message, inspect the log's counts; mission suppression by another mod, unavailable missions, or a full engine pool require separate diagnosis.
 
 ## Build and test
 
-Both builds produce an x64 .NET Framework DLL and `package/MissionBlipFix-<version>.zip`. A game installation is not required to build. Run the commands below from the repository root.
+Both builds produce an x64 .NET Framework DLL and `package/YAMBF-<version>.zip`. A game installation is not required to build. Run the commands below from the repository root.
 
 The dependency downloader fetches the SHVDNE 1.1.0.6 API DLL and Microsoft's .NET Framework 4.8 reference assemblies, checks their SHA-256 hashes against `ci/dependencies.json`, and extracts them into `.ci-deps/`. Python 3 and `curl` must be on your PATH; on Windows, use `curl.exe` supplied with Windows or install curl separately.
 

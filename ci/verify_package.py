@@ -4,8 +4,8 @@ from zipfile import ZipFile
 
 root = Path(__file__).resolve().parents[1]
 version = (root / "VERSION").read_text().strip()
-archive = root / "package" / f"MissionBlipFix-{version}.zip"
-expected = ["README.md", "scripts/MissionBlipFix.dll"]
+archive = root / "package" / f"YAMBF-{version}.zip"
+expected = ["README.md", "scripts/YAMBF.dll"]
 with ZipFile(archive) as package:
     if sorted(package.namelist()) != expected:
         raise ValueError(f"Unexpected release contents: {package.namelist()}")
